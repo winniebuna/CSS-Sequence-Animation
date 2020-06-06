@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #272727;
+  color: white;
+  font-family: "Poppins";
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  .left {
+    margin-right: 3em;
+  }
+  p {
+    margin: 0;
+  }
+  .right {
+    overflow: hidden;
+  }
+}
+
+p,
+label {
+  font-size: 1.5em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 1.5em 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+    color: #a0a0a0;
+  }
+}
+
+ul.featured {
+  li {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: 0.5s;
+    cursor: pointer;
+    transition-timing-function: cubic-bezier(0.75, -0.015, 0.565, 1.055);
+    transition-property: opacity, transform;
+    transition-delay: calc(0.025s * (var(--length) - (var(--index) + 1)));
+  }
+  li:hover {
+    color: white;
+  }
+}
+
+label {
+  cursor: pointer;
+  color: gray;
+
+  &:hover {
+    color: white;
+  }
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -5000px;
+  &:checked + label {
+    color: white;
+  }
+  &:checked ~ ul li {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: calc(0.055s * var(--index));
+  }
+}
